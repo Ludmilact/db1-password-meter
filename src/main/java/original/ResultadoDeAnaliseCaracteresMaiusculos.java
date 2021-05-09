@@ -24,8 +24,8 @@ public class ResultadoDeAnaliseCaracteresMaiusculos extends ResultadoDeAnalise {
         int maiusculas = 0;
 
         for (int i = 0; i < senha.length(); i++) {
-            char caracter = senha.charAt(i);
-            if (caracter >= 'A' && caracter <= 'Z')
+            char caractere = senha.charAt(i);
+            if (caractere >= 'A' && caractere <= 'Z')
                 maiusculas++;
         }
         return maiusculas;

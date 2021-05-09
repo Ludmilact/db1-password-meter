@@ -20,27 +20,27 @@ public class ResultadoDeAnaliseSimbolos extends ResultadoDeAnalise {
             estado = TipoEstado.EXCEPCIONAL;
     }
 
-    private boolean isMaisculo(char caracter){
-        return (caracter >= 'A' && caracter <= 'Z');
+    private boolean isMaisculo(char caractere){
+        return (caractere >= 'A' && caractere <= 'Z');
     }
 
-    private boolean isMinusculo(char caracter){
-        return (caracter >= 'a' && caracter <= 'z');
+    private boolean isMinusculo(char caractere){
+        return (caractere >= 'a' && caractere <= 'z');
     }
 
-    private boolean isNumero(char caracter){
-        return (caracter >= '0' && caracter <= '9');
+    private boolean isNumero(char caractere){
+        return (caractere >= '0' && caractere <= '9');
     }
 
-    private boolean isEspaco(char caracter){
-        return (caracter == ' ');
+    private boolean isEspaco(char caractere){
+        return (caractere == ' ');
     }
 
     private int contarNumeroDeSimbolos(String senha){
         int count = 0;
         for (int i = 0; i < senha.length(); i++){
-            char caracter = senha.charAt(i);
-            if (! (isMinusculo(caracter) || isMaisculo(caracter) || isNumero(caracter) || isEspaco(caracter) ))
+            char caractere = senha.charAt(i);
+            if (! (isMinusculo(caractere) || isMaisculo(caractere) || isNumero(caractere) || isEspaco(caractere) ))
                 count++;
         }
         return count;
