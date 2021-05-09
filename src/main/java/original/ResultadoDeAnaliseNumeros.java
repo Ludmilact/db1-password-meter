@@ -21,20 +21,10 @@ public class ResultadoDeAnaliseNumeros extends ResultadoDeAnalise {
             estado = TipoEstado.FALHA;
     }
 
-    public int contarNumeros(String senha){
-        int count = 0;
-        for (int i = 0; i < senha.length(); i++){
-            if (Character.isDigit(senha.charAt(i))) {
-                count++;
-            }
-        }
-        return count;
-    }
-
     private void calcularResultado(String senha){
         //(n*4)
         int multiplicador = 4;
-        contagem = contarNumeros(senha);
+        contagem = AnalisaRequisitos.obterQuantidadeDeNumeros(senha);
 
         if (contagem == senha.length())
             bonus = 0;

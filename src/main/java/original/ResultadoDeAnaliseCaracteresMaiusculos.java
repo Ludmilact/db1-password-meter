@@ -20,20 +20,10 @@ public class ResultadoDeAnaliseCaracteresMaiusculos extends ResultadoDeAnalise {
             estado = TipoEstado.EXCEPCIONAL;
     }
 
-    private int obterNumeroDeLetasMaisculas(String senha) {
-        int maiusculas = 0;
-
-        for (int i = 0; i < senha.length(); i++) {
-            char caractere = senha.charAt(i);
-            if (caractere >= 'A' && caractere <= 'Z')
-                maiusculas++;
-        }
-        return maiusculas;
-    }
 
     private void calcularResultado(String senha) {
         //(len-n) * 2
-        contagem = obterNumeroDeLetasMaisculas(senha);
+        contagem = AnalisaRequisitos.obterQuantidadeDeLetrasMaisculas(senha);
 
         if (contagem > 0)
             bonus = (senha.length() - contagem) * 2;

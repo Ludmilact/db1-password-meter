@@ -21,29 +21,9 @@ public class ResultadoDeAnaliseSimbolosENumeros extends ResultadoDeAnalise {
             estado = TipoEstado.EXCEPCIONAL;
     }
 
-    private int contarNumeroDeSimbolosNoMeio(String senha){
-        int count = 0;
-        for (int i = 1; i < senha.length() - 1; i++){
-            char caractere = senha.charAt(i);
-
-            if (ValidaCaractere.isSimbolo(caractere))
-                count++;
-        }
-        return count;
-    }
-
-    private int contarNumerosNoMeio(String senha){
-        int count = 0;
-        for (int i = 1; i < senha.length()-1; i++){
-            if (Character.isDigit(senha.charAt(i))) {
-                count++;
-            }
-        }
-        return count;
-    }
-
     private int contarNumeroDeSimbolosENumerosNoMeio(String senha){
-        return contarNumerosNoMeio(senha) + contarNumeroDeSimbolosNoMeio(senha);
+        return AnalisaRequisitos.obterQuantidadeDeSimbolosNoMeio(senha) +
+                AnalisaRequisitos.obterQuantidadeDeNumerosNoMeio(senha);
     }
 
     private void calcularResultado(String senha){

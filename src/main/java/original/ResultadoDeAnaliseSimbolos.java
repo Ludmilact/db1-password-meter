@@ -20,20 +20,10 @@ public class ResultadoDeAnaliseSimbolos extends ResultadoDeAnalise {
             estado = TipoEstado.EXCEPCIONAL;
     }
 
-    private int contarNumeroDeSimbolos(String senha){
-        int count = 0;
-        for (int i = 0; i < senha.length(); i++){
-            char caractere = senha.charAt(i);
-            if (ValidaCaractere.isSimbolo(caractere))
-                count++;
-        }
-        return count;
-    }
-
     private void calcularResultado(String senha){
         //(n*6)
         int multiplicador = 6;
-        contagem = contarNumeroDeSimbolos(senha);
+        contagem = AnalisaRequisitos.obterQuantidadeDeSimbolos(senha);
         bonus = contagem * multiplicador;
     }
 

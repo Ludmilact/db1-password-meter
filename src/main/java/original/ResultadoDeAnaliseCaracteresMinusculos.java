@@ -20,21 +20,10 @@ public class ResultadoDeAnaliseCaracteresMinusculos extends ResultadoDeAnalise {
             estado = TipoEstado.EXCEPCIONAL;
     }
 
-
-    private int obterNumeroDeLetrasMinusculas(String senha) {
-        int minusculas = 0;
-
-        for (int i = 0; i < senha.length(); i++){
-            char letra = senha.charAt(i);
-            if (letra >= 'a' && letra <= 'z')
-                minusculas++;
-        }
-        return minusculas;
-    }
-
     private void calcularResultado(String senha){
         //(len-n) * 2
-        contagem = obterNumeroDeLetrasMinusculas(senha);
+        contagem = AnalisaRequisitos.obterQuantidadeDeLetrasMinusculas(senha);
+
         if (contagem > 0)
             bonus = (senha.length() - contagem) * 2;
         else
