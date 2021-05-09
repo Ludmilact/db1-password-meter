@@ -12,7 +12,7 @@ public class ResultadoDeAnaliseCaracteresMinusculos extends ResultadoDeAnalise {
     }
 
     private void calcularEstado() {
-        if (contagem > 1)
+        if (contagem < 1)
             estado = TipoEstado.FALHA;
         else if (contagem == 1)
             estado = TipoEstado.SUFICIENTE;
