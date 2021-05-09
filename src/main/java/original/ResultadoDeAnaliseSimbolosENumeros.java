@@ -22,12 +22,11 @@ public class ResultadoDeAnaliseSimbolosENumeros extends ResultadoDeAnalise {
     }
 
     private int contarNumeroDeSimbolosNoMeio(String senha){
-        var validador = new ValidaCaractere();
         int count = 0;
         for (int i = 1; i < senha.length() - 1; i++){
             char caractere = senha.charAt(i);
 
-            if (validador.isSimbolo(caractere))
+            if (ValidaCaractere.isSimbolo(caractere))
                 count++;
         }
         return count;
