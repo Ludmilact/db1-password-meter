@@ -35,7 +35,11 @@ public class ResultadoDeAnaliseNumeros extends ResultadoDeAnalise {
         //(n*4)
         int multiplicador = 4;
         contagem = contarNumeros(senha);
-        bonus = contagem * multiplicador;
+
+        if (contagem == senha.length())
+            bonus = 0;
+        else
+            bonus = contagem * multiplicador;
     }
 
     @Override
