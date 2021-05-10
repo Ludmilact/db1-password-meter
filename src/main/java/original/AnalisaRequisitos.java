@@ -1,5 +1,8 @@
 package original;
 
+import java.util.Map;
+import java.util.stream.Collectors;
+
 public class AnalisaRequisitos {
 
     public static int obterQuantidadeDeLetrasMaisculas(String senha) {
@@ -65,12 +68,12 @@ public class AnalisaRequisitos {
 
     }
 
-    public static int obterQuantidadeDeEspacos(String senha){
+    public static int obterQuantidadeDeEspacos(String senha) {
         int count = 0;
 
-       for (int i = 0; i < senha.length(); i++){
-           char caractere = senha.charAt(i);
-           if(ValidaCaractere.isEspaco(caractere))
+        for (int i = 0; i < senha.length(); i++) {
+            char caractere = senha.charAt(i);
+            if (ValidaCaractere.isEspaco(caractere))
                 count++;
         }
         return count;
@@ -78,5 +81,32 @@ public class AnalisaRequisitos {
 
     public static int obterQuantidadeDeLetras(String senha) {
         return obterQuantidadeDeLetrasMaisculas(senha) + obterQuantidadeDeLetrasMinusculas(senha);
+    }
+
+    public static int obterQuantidadeDeLetrasMaisculasConsecutivas(String senha) {
+        int maiusculas = 0;
+
+        for (int i = 0; i < senha.length(); i++) {
+            char caractere = senha.charAt(i);
+            if (i+1 >= senha.length())
+                break;
+            char proximoCaractere = senha.charAt(i+1);
+            if (ValidaCaractere.isMaisculo(caractere) && ValidaCaractere.isMaisculo(proximoCaractere))
+                maiusculas++;
+        }
+        return maiusculas;
+    }
+    public static int obterQuantidadeDeLetrasMinusculasConsecutivas(String senha) {
+        int minusculas = 0;
+
+        for (int i = 0; i < senha.length(); i++) {
+            char caractere = senha.charAt(i);
+            if (i+1 >= senha.length())
+                break;
+            char proximoCaractere = senha.charAt(i+1);
+            if (ValidaCaractere.isMinusculo(caractere) && ValidaCaractere.isMinusculo(proximoCaractere))
+                minusculas++;
+        }
+        return minusculas;
     }
 }
