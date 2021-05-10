@@ -88,37 +88,83 @@ public class AnalisaRequisitos {
 
         for (int i = 0; i < senha.length(); i++) {
             char caractere = senha.charAt(i);
-            if (i+1 >= senha.length())
+            if (i + 1 >= senha.length())
                 break;
-            char proximoCaractere = senha.charAt(i+1);
+            char proximoCaractere = senha.charAt(i + 1);
             if (ValidaCaractere.isMaisculo(caractere) && ValidaCaractere.isMaisculo(proximoCaractere))
                 maiusculas++;
         }
         return maiusculas;
     }
+
     public static int obterQuantidadeDeLetrasMinusculasConsecutivas(String senha) {
         int minusculas = 0;
 
         for (int i = 0; i < senha.length(); i++) {
             char caractere = senha.charAt(i);
-            if (i+1 >= senha.length())
+            if (i + 1 >= senha.length())
                 break;
-            char proximoCaractere = senha.charAt(i+1);
+            char proximoCaractere = senha.charAt(i + 1);
             if (ValidaCaractere.isMinusculo(caractere) && ValidaCaractere.isMinusculo(proximoCaractere))
                 minusculas++;
         }
         return minusculas;
     }
+
     public static int obterQuantidadeDeNumerosConsecutivos(String senha) {
         int count = 0;
         for (int i = 0; i < senha.length(); i++) {
             char caractere = senha.charAt(i);
-            if (i+1 >= senha.length())
+            if (i + 1 >= senha.length())
                 break;
-            char proximoCaractere = senha.charAt(i+1);
+            char proximoCaractere = senha.charAt(i + 1);
             if (ValidaCaractere.isNumero(caractere) && ValidaCaractere.isNumero(proximoCaractere))
                 count++;
         }
         return count;
     }
+
+    public static int obterQuantidadeDeLetrasSequenciais(String senha) {
+        int countSeqAlpha = 0;
+
+        for (int i = 0; i < 23; i++) {
+            String ALPHAS = "abcdefghijklmnopqrstuvwxyz";
+            String sFwd = ALPHAS.substring(i, i + 3);
+            String sRev = new StringBuilder(sFwd).reverse().toString();
+            if (senha.toLowerCase().contains(sFwd) || senha.toLowerCase().contains(sRev)) {
+                countSeqAlpha++;
+            }
+        }
+        return countSeqAlpha;
+
+    }
+
+    public static int obterQuantidadeDeNumerosSequenciais(String senha) {
+        int countSeqNumber = 0;
+
+        for (int i = 0; i < 8; i++) {
+            String DIGITS = "01234567890";
+            String sFwd = DIGITS.substring(i, i + 3);
+            String sRev = new StringBuilder(sFwd).reverse().toString();
+            if (senha.toLowerCase().contains(sFwd) || senha.toLowerCase().contains(sRev)) {
+                countSeqNumber++;
+            }
+        }
+        return countSeqNumber;
+    }
+
+    public static int obterQuantidadeDeSimbolosSequenciais(String senha) {
+        int countSeqSymbol = 0;
+
+        for (int i = 0; i < 8; i++) {
+            String SYMBOLS = ")!@#$%^&*()";
+            String sFwd = SYMBOLS.substring(i, i + 3);
+            String sRev = new StringBuilder(sFwd).reverse().toString();
+            if (senha.toLowerCase().contains(sFwd) || senha.toLowerCase().contains(sRev)) {
+                countSeqSymbol++;
+            }
+        }
+        return countSeqSymbol;
+    }
 }
+
