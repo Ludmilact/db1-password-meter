@@ -109,4 +109,16 @@ public class AnalisaRequisitos {
         }
         return minusculas;
     }
+    public static int obterQuantidadeDeNumerosConsecutivos(String senha) {
+        int count = 0;
+        for (int i = 0; i < senha.length(); i++) {
+            char caractere = senha.charAt(i);
+            if (i+1 >= senha.length())
+                break;
+            char proximoCaractere = senha.charAt(i+1);
+            if (ValidaCaractere.isNumero(caractere) && ValidaCaractere.isNumero(proximoCaractere))
+                count++;
+        }
+        return count;
+    }
 }
