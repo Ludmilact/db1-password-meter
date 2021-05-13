@@ -110,6 +110,8 @@ public class ValidaRequisitos {
 
     public static int obterQuantidadeDeNumerosConsecutivos(String senha) {
         int count = 0;
+        senha = senha.replaceAll("\\s", "");
+
         for (int i = 0; i < senha.length(); i++) {
             char caractere = senha.charAt(i);
             if (i + 1 >= senha.length())
