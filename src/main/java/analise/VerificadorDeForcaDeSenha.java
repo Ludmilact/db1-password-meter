@@ -1,15 +1,17 @@
 package analise;
 
 public class VerificadorDeForcaDeSenha {
-    int forcaDaSenha;
+
     String senha;
+    String resultadoComplexidade;
+    int resultadoScore;
 
     public VerificadorDeForcaDeSenha(String senha) {
         this.senha = senha;
+        verificar();
     }
 
     public void verificar(){
-
         var resultadoCaracteresMaiusculos = new ResultadoDeAnaliseCaracteresMaiusculos(senha);
         var resultadoCaracteresMaiusculosConsecutivos = new ResultadoDeAnaliseCaracteresMaiusculosConsecutivos(senha);
         var resultadoCaracteresMinusculosConsecutivos = new ResultadoDeAnaliseCaracteresMinusculasConsecutivas(senha);
@@ -27,7 +29,6 @@ public class VerificadorDeForcaDeSenha {
         var resultadoSomenteLetras = new ResultadoDeAnaliseSomenteLetras(senha);
         var resultadoSomenteNumeros = new ResultadoDeAnaliseSomenteNumeros(senha);
 
-
         var score = new Score();
 
         score.adicionarResultado(resultadoCaracteresMaiusculos);
@@ -43,16 +44,21 @@ public class VerificadorDeForcaDeSenha {
         score.adicionarResultado(resultadoSequenciaDeNumeros);
         score.adicionarResultado(resultadoSequenciaDeSimbolos);
         score.adicionarResultado(resultadoSimbolos);
+        score.adicionarResultado(resultadoSimbolosENumeros);
+        score.adicionarResultado(resultadoSomenteLetras);
+        score.adicionarResultado(resultadoSomenteNumeros);
 
-        var scoreResultado = score.calcularScore();
-        System.out.println(scoreResultado);
+        resultadoScore = score.calcularScore();
 
-        var complexidade = new Complexidade(scoreResultado);
-        var resultadoDeComplexidade = complexidade.calcularComplexidade();
-
+        var complexidade = new Complexidade(resultadoScore);
+        resultadoComplexidade = complexidade.calcularComplexidade();
     }
 
     String obterComplexidade(){
-        return "";
+        return resultadoComplexidade;
+    }
+
+    int obterScore(){
+        return resultadoScore;
     }
 }
