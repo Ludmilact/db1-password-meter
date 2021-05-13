@@ -22,6 +22,11 @@ public class Score {
             else
                 guardarScore = guardarScore + resultadoAtual.obterBonus();
         }
+        if (guardarScore > 100)
+            guardarScore = 100;
+        else if (guardarScore <= 0)
+            guardarScore = 0;
+
         return guardarScore;
     }
 }
